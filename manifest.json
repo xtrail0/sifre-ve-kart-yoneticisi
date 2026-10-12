@@ -1,0 +1,40 @@
+{
+  "manifest_version": 3,
+  "name": "Kişisel Kimlik ve Şifre Yöneticisi",
+  "version": "2.4",
+  "description": "AES-256 kasa, parola sızıntı kontrolü, form içi doldurma ve canlı geçici posta.",
+  "permissions": [
+    "storage",
+    "activeTab",
+    "scripting"
+  ],
+  "host_permissions": [
+    "https://api.guerrillamail.com/*",
+    "https://api.pwnedpasswords.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "icons": {
+    "16": "icon.png",
+    "48": "icon.png",
+    "128": "icon.png"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Şifre & Kart Yöneticisi",
+    "default_icon": {
+      "16": "icon.png",
+      "48": "icon.png",
+      "128": "icon.png"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "all_frames": true,
+      "run_at": "document_end"
+    }
+  ]
+}
